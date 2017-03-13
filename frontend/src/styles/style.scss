@@ -1,3 +1,7 @@
+$primary-color: #8a0069;
+$text-color: #eeeb77;
+
 body {
-    background-color: red;
+    color: $text-color;
+    background-color: $primary-color;
 }
