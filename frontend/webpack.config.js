@@ -12,7 +12,6 @@ const package_json = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 const dependencies = Object.getOwnPropertyNames(package_json.dependencies);
 
 const buildPath = path.join(__dirname, './build');
-const sourcePath = path.join(__dirname, './src');
 const imgPath = path.join(__dirname, './src/assets/img');
 
 const extractSass = new ExtractTextPlugin({
@@ -21,6 +20,7 @@ const extractSass = new ExtractTextPlugin({
 });
 
 module.exports = {
+    devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map',
     entry: {
         app: './src/index.js',
         vendor: dependencies
