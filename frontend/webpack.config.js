@@ -1,0 +1,73 @@
+const webpack = require('webpack');
+const path = require('path');
+const fs = require('fs');
+
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const nodeEnv = process.env.NODE_ENV || 'development';
+const isProduction = nodeEnv === 'production';
+
+const package_json = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+const dependencies = Object.getOwnPropertyNames(package_json.dependencies);
+
+const buildPath = path.join(__dirname, './build');
+const sourcePath = path.join(__dirname, './src');
+const imgPath = path.join(__dirname, './src/assets/img');
+
+const extractSass = new ExtractTextPlugin({
+    filename: '[name]-[hash].css',
+    disable: !isProduction
+});
+
+module.exports = {
+    entry: {
+        app: './src/index.js',
+        vendor: dependencies
+    },
+    output: {
+        path: buildPath,
+        publicPath: '/',
+        filename: '[name]-[hash].js',
+    },
+    module: {
+        rules: [{
+            test: /\.(js|jsx)$/,
+            exclude: /node_modules/,
+            use: [{
+                loader: 'babel-loader',
+                options: {
+                    presets: ['es2015']
+                }
+            }]
+        }, {
+            test: /\.(png|gif|jpg|svg)$/,
+            include: imgPath,
+            use: 'file-loader?./[name]-[hash].[ext]',
+        }, {
+            test: /\.scss$/,
+            use: extractSass.extract({
+                use: [{
+                    loader: 'css-loader'
+                }, {
+                    loader: 'sass-loader'
+                }],
+                fallback: 'style-loader'
+            })
+        }]
+    },
+    plugins: [
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            minChunks: Infinity,
+            filename: '[name]-[hash].js',
+        }),
+        extractSass,
+        new HtmlWebpackPlugin({
+            title: 'Title',
+            filename: './index.html',
+            template: './src/index.html',
+            favicon: './src/assets/img/flower_icon.png'
+        })
+    ]
+};
