@@ -37,7 +37,7 @@ module.exports = {
             use: [{
                 loader: 'babel-loader',
                 options: {
-                    presets: ['es2015']
+                    presets: ['es2015', 'react']
                 }
             }]
         }, {
@@ -64,10 +64,12 @@ module.exports = {
         }),
         extractSass,
         new HtmlWebpackPlugin({
-            title: 'Title',
             filename: './index.html',
             template: './src/index.html',
             favicon: './src/assets/img/flower_icon.png'
         })
-    ]
+    ],
+    resolve: {
+        extensions: ['.js', '.jsx']
+    }
 };

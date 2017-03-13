@@ -1,3 +1,3 @@
 # PIK-Projekt: Frontend
 
-TODO: **everything**
+## Initial setup
