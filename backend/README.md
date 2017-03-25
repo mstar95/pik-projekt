@@ -1,12 +1,5 @@
 # PIK-Projekt: Backend
 
-## Build
-
-To build project run:
-```
-gradle build
-```
-
 ## Database
 
 To configure database connection edit  
@@ -14,21 +7,16 @@ To configure database connection edit
 src/main/resources/application.properties
 ```
 
+## Build
 
-To view the application navigate to [`http://localhost:8080/`](http://localhost:8080/) in the browser.
-
-## Testing
-
-Testing is done using `jest`. To run the tests enter:
+To build project run:
 ```
-npm test
+gradle build
 ```
-Jest will automatically find and run all files with the `test.js` or `test.jsx` extension;
 
-## Production
+## Development
 
-To generate production ready code run:
+To start application run:
 ```
-npm run build
+gradle bootrun
 ```
-You can find the code in the `build` folder.
