@@ -4,6 +4,6 @@ branches:
   only:
   - develop
   
-before_script:cd backend  
+before_script: cd backend  
 
-script:gradle check
+script: gradle check
