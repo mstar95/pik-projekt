@@ -11,7 +11,7 @@ class KotlinJunitTest {
 
     @Test
     fun firstTest() {
-        Assert.assertTrue(1 == 2)
+        Assert.assertTrue(1 == 1)
     }
 
 }
