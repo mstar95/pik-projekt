@@ -14,7 +14,7 @@ class HelloControler {
 
     @GetMapping("/")
     @ResponseBody
-    open fun getHello(): String {
+    fun getHello(): String {
         return "Hello world!"
     }
 }
