@@ -1,0 +1,23 @@
+task build {}
+build.dependsOn backendBuild
+
+task test {}
+test.dependsOn backendTest
+
+task run {}
+run.dependsOn backendRun
+
+task backendBuild(type: GradleBuild) {
+    buildFile = 'backend/build.gradle'
+    tasks = ['build']
+}
+
+task backendTest(type: GradleBuild) {
+    buildFile = 'backend/build.gradle'
+    tasks = ['test']
+}
+
+task backendRun(type: GradleBuild) {
+    buildFile = 'backend/build.gradle'
+    tasks = ['bootRun']
+}
