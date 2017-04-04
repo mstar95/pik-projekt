@@ -6,7 +6,7 @@ jdk:
 branches:
   only:
   - develop
-before_script:
+before_install:
   - chmod +x gradlew
 
 script: 
