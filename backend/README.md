@@ -28,12 +28,19 @@ sudo -u postgres createdb dbname
 
 To build project run:
 ```
-gradle build
+./gradlew build
+```
+
+## Test
+
+To test the application run:
+```
+./gradlew test
 ```
 
 ## Development
 
 To start application run:
 ```
-gradle bootrun
+./gradlew bootrun
 ```
