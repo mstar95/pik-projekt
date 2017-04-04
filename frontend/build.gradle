@@ -3,6 +3,7 @@ plugins {
 }
 
 task build {
+    dependsOn npm_install
     dependsOn npm_run_build
 }
 
