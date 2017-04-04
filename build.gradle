@@ -1,12 +1,3 @@
-task build {}
-build.dependsOn backendBuild
-
-task test {}
-test.dependsOn backendTest
-
-task run {}
-run.dependsOn backendRun
-
 task backendBuild(type: GradleBuild) {
     buildFile = 'backend/build.gradle'
     tasks = ['build']
@@ -21,3 +12,12 @@ task backendRun(type: GradleBuild) {
     buildFile = 'backend/build.gradle'
     tasks = ['bootRun']
 }
+
+task build {}
+build.dependsOn backendBuild
+
+task test {}
+test.dependsOn backendTest
+
+task run {}
+run.dependsOn backendRun
