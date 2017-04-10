@@ -6,8 +6,8 @@ jdk:
 branches:
   only:
   - develop
-  
-before_script: cd backend  
+before_install:
+  - chmod +x gradlew
 
 script: 
   - TERM=dumb ./gradlew check
