@@ -7,15 +7,4 @@ import javax.persistence.*
  */
 @Entity
 @Table(name="\"User\"")
-class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public var id = 0
-    public var  name :String = ""
-    constructor(){
-
-    }
-    constructor(name : String){
-        this.name=name
-    }
-}
+data class User (val name: String? = null, @Id @GeneratedValue(strategy = GenerationType.AUTO) val id: Long? = null)
