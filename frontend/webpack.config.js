@@ -15,69 +15,69 @@ const buildPath = path.join(__dirname, './build');
 const imgPath = path.join(__dirname, './src/assets/img');
 
 const extractSass = new ExtractTextPlugin({
-    filename: '[name]-[hash].css',
-    disable: !isProduction
+  filename: '[name]-[hash].css',
+  disable: !isProduction
 });
 
 module.exports = {
-    devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map',
-    entry: {
-        app: './src/index.js',
-        vendor: dependencies
-    },
-    output: {
-        path: buildPath,
-        publicPath: '/',
-        filename: '[name]-[hash].js',
-    },
-    module: {
-        rules: [{
-            test: /\.(js|jsx)$/,
-            exclude: /node_modules/,
-            use: [{
-                loader: 'babel-loader',
-                options: {
-                    presets: ['es2015', 'react']
-                }
+  devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map',
+  entry: {
+    app: './src/index.js',
+    vendor: dependencies
+  },
+  output: {
+    path: buildPath,
+    publicPath: '/',
+    filename: '[name]-[hash].js',
+  },
+  module: {
+    rules: [{
+      test: /\.(js|jsx)$/,
+      exclude: /node_modules/,
+      use: [{
+        loader: 'babel-loader',
+        options: {
+          presets: ['es2015', 'react']
+        }
             }]
         }, {
-            test: /\.(png|gif|jpg|svg)$/,
-            include: imgPath,
-            use: 'file-loader?./[name]-[hash].[ext]',
+      test: /\.(png|gif|jpg|svg)$/,
+      include: imgPath,
+      use: 'file-loader?./[name]-[hash].[ext]',
         }, {
-            test: /\.scss$/,
-            use: extractSass.extract({
-                use: [{
-                    loader: 'css-loader'
+      test: /\.scss$/,
+      use: extractSass.extract({
+        use: [{
+          loader: 'css-loader'
                 }, {
-                    loader: 'sass-loader'
+          loader: 'sass-loader'
                 }],
-                fallback: 'style-loader'
-            })
+        fallback: 'style-loader'
+      })
         }]
-    },
-    plugins: [
+  },
+  plugins: [
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            minChunks: Infinity,
-            filename: '[name]-[hash].js',
-        }),
+      name: 'vendor',
+      minChunks: Infinity,
+      filename: '[name]-[hash].js',
+    }),
         extractSass,
         new HtmlWebpackPlugin({
-            filename: './index.html',
-            template: './src/index.html',
-            favicon: './src/assets/img/flower_icon.png'
-        })
+      filename: './index.html',
+      template: './src/index.html',
+      favicon: './src/assets/img/flower_icon.png'
+    })
     ],
-    resolve: {
-        extensions: ['.js', '.jsx']
-    },
-    devServer: {
-        proxy: {
-            '/api': {
-                target: 'http://localhost:9000',
-                secure: false
-            }
-        }
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:9000',
+        secure: false
+      }
     }
+  }
 };
