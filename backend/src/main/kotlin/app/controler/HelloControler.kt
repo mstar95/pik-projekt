@@ -19,7 +19,7 @@ class HelloControler {
     lateinit var repository:UserRepository
 
 
-    @GetMapping("/users")
+    @GetMapping("/api/users")
     @ResponseBody
     fun getHello(): MutableIterable<User>? {
         repository.deleteAll()
