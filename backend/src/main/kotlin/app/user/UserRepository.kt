@@ -1,6 +1,6 @@
-package app.repository
+package app.user
 
-import app.entity.User
+import app.user.User
 import org.springframework.data.repository.CrudRepository
 
 /**
