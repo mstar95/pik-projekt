@@ -1,13 +1,12 @@
 import React from 'react';
-import Navbar from './Navbar';
+import PageWrapper from './PageWrapper';
 
 const Login = () => (
-  <div>
-    <Navbar />
-    <div className='test'>
+  <PageWrapper>
+    <div>
       Login
     </div>
-  </div>
+  </PageWrapper>
 )
 
 export default Login;

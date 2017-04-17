@@ -1,13 +1,12 @@
 import React from 'react';
-import Navbar from './Navbar';
+import PageWrapper from './PageWrapper';
 
 const Home = () => (
-  <div>
-    <Navbar />
+  <PageWrapper>
     <div>
       Home
     </div>
-  </div>
+  </PageWrapper>
 )
 
 export default Home;

@@ -1,0 +1,41 @@
+@import './colors.scss';
+
+$navbar-height: 3rem;
+$navbar-item-padding: 0.5rem;
+
+.navbar {
+  position: absolute;
+  top: 0;
+  box-sizing: border-box;
+
+  width: 100%;
+  height: $navbar-height;
+
+  padding: 0 2rem;
+
+  background-color: $theme-primary;
+
+  ul {
+    margin: 0 (-$navbar-item-padding);
+    padding: 0;
+    height: $navbar-height;
+    list-style: none;
+  }
+
+  li {
+    padding: 0 $navbar-item-padding;
+    display: inline-block;
+
+    height: $navbar-height;
+    line-height: $navbar-height;
+
+    a {
+      color: $text-secondary;
+      text-decoration: none;
+    }
+
+    a.active {
+      font-weight: bold;
+    }
+  }
+}

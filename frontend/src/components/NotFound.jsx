@@ -1,11 +1,12 @@
 import React from 'react';
-import Navbar from './Navbar';
+import PageWrapper from './PageWrapper';
 
 const NotFound = () => (
-  <div>
-    <Navbar />
-    <p>{'404 :('}</p>
-  </div>
+  <PageWrapper>
+    <div>
+      {'404 :('}
+    </div>
+  </PageWrapper>
 )
 
 export default NotFound;
