@@ -3,14 +3,17 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server --progress",
-    "build": "rimraf build && cross-env NODE_ENV=production webpack -p --progress",
-    "test": "jest --config jest.config.json"
+    "start": "webpack-dev-server --progress --config config/webpack.config.js",
+    "build": "rimraf build && cross-env NODE_ENV=production webpack -p --progress --config config/webpack.config.js",
+    "test": "jest"
   },
   "license": "MIT",
   "dependencies": {
     "react": "15.4.2",
-    "react-dom": "15.4.2"
+    "react-dom": "15.4.2",
+    "react-redux": "5.0.4",
+    "react-router": "4.1.1",
+    "redux": "3.6.0"
   },
   "devDependencies": {
     "babel-core": "6.24.0",
@@ -31,5 +34,21 @@
     "style-loader": "0.13.2",
     "webpack": "2.2.1",
     "webpack-dev-server": "2.4.1"
+  },
+  "jest": {
+    "moduleFileExtensions": ["js", "jsx"],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/jest/file.mock.js",
+      "\\.(css|less|scss)$": "<rootDir>/config/jest/style.mock.js"
+    },
+    "collectCoverage": true
+  },
+  "babel": {
+    "presets": ["es2015", "react"],
+    "env": {
+      "test": {
+        "plugins": ["transform-es2015-modules-commonjs"]
+      }
+    }
   }
 }

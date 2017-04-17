@@ -11,7 +11,7 @@ const isProduction = nodeEnv === 'production';
 const package_json = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 const dependencies = Object.getOwnPropertyNames(package_json.dependencies);
 
-const buildPath = path.join(__dirname, './build');
+const buildPath = path.join(__dirname, '../build');
 const imgPath = path.join(__dirname, './src/assets/img');
 
 const extractSass = new ExtractTextPlugin({
@@ -22,13 +22,13 @@ const extractSass = new ExtractTextPlugin({
 module.exports = {
   devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map',
   entry: {
-    app: './src/index.js',
+    app: './src/index.jsx',
     vendor: dependencies
   },
   output: {
     path: buildPath,
     publicPath: '/',
-    filename: '[name]-[hash].js',
+    filename: '[name]-[hash:8].js',
   },
   module: {
     rules: [{
@@ -39,36 +39,36 @@ module.exports = {
         options: {
           presets: ['es2015', 'react']
         }
-            }]
-        }, {
-      test: /\.(png|gif|jpg|svg)$/,
+      }]
+    }, {
+      test: /\.(png|gif|jpe?g|svg)$/,
       include: imgPath,
-      use: 'file-loader?./[name]-[hash].[ext]',
-        }, {
+      use: 'file-loader?./[name]-[hash:8].[ext]',
+    }, {
       test: /\.scss$/,
       use: extractSass.extract({
         use: [{
           loader: 'css-loader'
-                }, {
+        }, {
           loader: 'sass-loader'
-                }],
+        }],
         fallback: 'style-loader'
       })
-        }]
+    }]
   },
   plugins: [
-        new webpack.optimize.CommonsChunkPlugin({
+    new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: Infinity,
       filename: '[name]-[hash].js',
     }),
-        extractSass,
-        new HtmlWebpackPlugin({
+    extractSass,
+    new HtmlWebpackPlugin({
       filename: './index.html',
       template: './src/index.html',
-      favicon: './src/assets/img/flower_icon.png'
+      favicon: './src/favicon.png'
     })
-    ],
+  ],
   resolve: {
     extensions: ['.js', '.jsx']
   },
@@ -78,6 +78,7 @@ module.exports = {
         target: 'http://localhost:9000',
         secure: false
       }
-    }
+    },
+    historyApiFallback: true
   }
 };
