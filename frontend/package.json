@@ -12,7 +12,7 @@
     "react": "15.4.2",
     "react-dom": "15.4.2",
     "react-redux": "5.0.4",
-    "react-router": "4.1.1",
+    "react-router-dom": "4.1.1",
     "redux": "3.6.0"
   },
   "devDependencies": {
@@ -36,7 +36,10 @@
     "webpack-dev-server": "2.4.1"
   },
   "jest": {
-    "moduleFileExtensions": ["js", "jsx"],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/jest/file.mock.js",
       "\\.(css|less|scss)$": "<rootDir>/config/jest/style.mock.js"
@@ -44,10 +47,15 @@
     "collectCoverage": true
   },
   "babel": {
-    "presets": ["es2015", "react"],
+    "presets": [
+      "es2015",
+      "react"
+    ],
     "env": {
       "test": {
-        "plugins": ["transform-es2015-modules-commonjs"]
+        "plugins": [
+          "transform-es2015-modules-commonjs"
+        ]
       }
     }
   }
