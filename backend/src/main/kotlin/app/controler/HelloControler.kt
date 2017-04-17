@@ -1,8 +1,8 @@
 package app.controler
 
 
-import app.entity.User
-import app.repository.UserRepository
+import app.user.User
+import app.user.UserRepository
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class HelloControler {
     @Autowired
-    lateinit var repository:UserRepository
+    lateinit var repository: UserRepository
 
 
     @GetMapping("/api/users")
