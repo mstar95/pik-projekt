@@ -11,10 +11,8 @@ class App extends React.Component {
   }
 
   loadUsersFromServer() {
-    $.ajax({url: "api/users"}).then((data) => {
-      this.setState({users: data});
-    });
   }
+
   componentDidMount() {
     this.loadUsersFromServer();
   }
