@@ -1,7 +1,7 @@
 package app.controler
 
 
-import app.errors.ExampleException
+import app.errors.exceptions.ExampleException
 import app.user.User
 import app.user.UserRepository
 

@@ -8,11 +8,8 @@ import javax.servlet.ServletException
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
-/**
- * Created by michal on 15/04/2017.
- */
 @Component
-class RESTAuthenticationSuccessHandler : SimpleUrlAuthenticationSuccessHandler() {
+open class RESTAuthenticationSuccessHandler : SimpleUrlAuthenticationSuccessHandler() {
 
     @Throws(IOException::class, ServletException::class)
     override fun onAuthenticationSuccess(request: HttpServletRequest, response: HttpServletResponse,
