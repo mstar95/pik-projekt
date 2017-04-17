@@ -18,3 +18,7 @@ body {
 .page-wrapper {
   padding-top: $navbar-height;
 }
+
+.page-content {
+  padding: 1rem $navbar-padding;
+}

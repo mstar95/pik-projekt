@@ -3,7 +3,7 @@ import PageWrapper from './PageWrapper';
 
 const Home = () => (
   <PageWrapper>
-    <div>
+    <div className="page-content">
       Home
     </div>
   </PageWrapper>

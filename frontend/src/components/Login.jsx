@@ -3,7 +3,7 @@ import PageWrapper from './PageWrapper';
 
 const Login = () => (
   <PageWrapper>
-    <div>
+    <div className="page-content">
       Login
     </div>
   </PageWrapper>

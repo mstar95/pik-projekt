@@ -3,7 +3,7 @@ import PageWrapper from './PageWrapper';
 
 const NotFound = () => (
   <PageWrapper>
-    <div>
+    <div className="page-content">
       {'404 :('}
     </div>
   </PageWrapper>
