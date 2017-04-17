@@ -13,7 +13,8 @@ class ServletResponseErrorSender {
     lateinit var mapper: ObjectMapper
 
     fun sendError(response: HttpServletResponse, ex: ApiException) {
-        response.contentType = "application/json;charset=UTF-8";
-        response.writer.write(mapper.writeValueAsString(ErrorResponse(ex)));
+        response.status = ex.status.value()
+        response.contentType = "application/json;charset=UTF-8"
+        response.writer.write(mapper.writeValueAsString(ErrorResponse(ex)))
     }
 }
