@@ -1,25 +1,17 @@
 import React from 'react';
-import {UserList} from './users';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './Home';
+import Login from './Login';
+import NotFound from './NotFound';
 
-export default
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      users: []
-    };
-  }
+const App = () => (
+  <Router>
+    <Switch>
+      <Route name="Home" exact path="/" component={Home}/>
+      <Route name="Login" exact path="/login" component={Login}/>
+      <Route name="NotFound" path="*" component={NotFound}/>
+    </Switch>
+  </Router>
+)
 
-  loadUsersFromServer() {
-  }
-
-  componentDidMount() {
-    this.loadUsersFromServer();
-  }
-
-  render() {
-    return (
-      <UserList users={this.state.users}/>
-    );
-  }
-}
+export default App;
