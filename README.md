@@ -1,5 +1,6 @@
 # PIK-Projekt
 
+
 # Frontend
 
 ## Initial setup
@@ -36,6 +37,7 @@ To generate production ready code run:
 npm run build
 ```
 You can find the code in the `build` folder.
+
 
 # Backend
 
@@ -83,6 +85,7 @@ To start application run:
 ```
 ./gradlew bootrun
 ```
+
 
 # Travis
 
