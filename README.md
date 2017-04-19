@@ -1,5 +1,5 @@
 # PIK-Projekt
-
+<br />
 
 # Frontend
 
@@ -19,7 +19,7 @@ npm start
 This will **not** output any files. Webpack compiles the
 code and serves it from memory.
 
-To view the application navigate to [`http://localhost:8080/`](http://localhost:8080/) in the browser.
+To view the application navigate to [`http://localhost:8080/`](http://localhost:8080/) in the browser.<br />
 If the specified port number is already taken by another application, the port number rolls forward to the next available number (e.g. 8080 -> 8081).
 
 ## Testing
@@ -37,7 +37,7 @@ To generate production ready code run:
 npm run build
 ```
 You can find the code in the `build` folder.
-
+<br /><br />
 
 # Backend
 
@@ -85,7 +85,7 @@ To start application run:
 ```
 ./gradlew bootrun
 ```
-
+<br />
 
 # Travis
 
