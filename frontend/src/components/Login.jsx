@@ -1,42 +1,42 @@
 import React from 'react';
 import PageWrapper from './PageWrapper';
-import axios from 'axios'
+import axios from 'axios';
+import querystring from 'query-string';
+
 class Login extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {user: 'user',password:'password'};
+    this.state = {user: 'user', password:'password'};
 
-    this.handleChange = this.handleChange.bind(this);
+    this.onUsernameInput = this.onUsernameInput.bind(this);
+    this.onPasswordInput = this.onPasswordInput.bind(this);
     this.doLogin = this.doLogin.bind(this);
   }
 
   doLogin(event) {
-    // Just prevent the screen reload from the form actually submitting.
     event.preventDefault();
-    axios({
+
+    return axios({
       method: 'post',
       url: '/api/login',
-      withCredentials: true,
       headers : {
         'Content-Type' : 'application/x-www-form-urlencoded'
       },
-      auth: {
-        username:  'user',
-        password: 'password'
-      },
-    })
-      .then(function (response) {
-        console.log(response);
+      data: querystring.stringify({
+        username: this.state.user,
+        password: this.state.password
       })
-      .catch(function (error) {
-        console.log(error);
-      });
+    }).then(response => console.log('response:', response.data))
+      .catch(error => console.log(error));
   }
 
-  handleChange(event) {
-    this.setState({username: event.target.username});
-    this.setState({password: event.target.password});
+  onUsernameInput(event) {
+    this.setState({user: event.target.value});
+  }
+
+  onPasswordInput(event) {
+    this.setState({password: event.target.value});
   }
 
   render() {
@@ -48,14 +48,14 @@ class Login extends React.Component {
             <div>
               <label>Username</label>
               <input type="text" placeholder="Username" ref="username"
-                     value = {this.state.user}
-                     onChange={this.handleChange}/>
+                     value={this.state.user}
+                     onChange={this.onUsernameInput}/>
             </div>
             <div>
               <label>Password</label>
               <input type="password" placeholder="Password"
-                     ref="password" value = {this.state.password}
-                     onChange={this.handleChange} />
+                     ref="password" value={this.state.password}
+                     onChange={this.onPasswordInput} />
             </div>
             <button type="submit" className="btn btn-success">Sign in</button>
           </form>
