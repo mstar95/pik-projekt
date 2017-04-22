@@ -1,6 +1,5 @@
 package app.user
 
-import app.user.User
 import org.springframework.data.repository.CrudRepository
 
 /**
@@ -8,5 +7,5 @@ import org.springframework.data.repository.CrudRepository
  */
 
 interface UserRepository : CrudRepository<User, Long> {
-    fun findByName(name: String): List<User>
+    fun findByUsername(username: String): User
 }

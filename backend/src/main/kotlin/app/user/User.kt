@@ -7,5 +7,5 @@ import javax.persistence.*
  */
 @Entity
 @Table(name="\"User\"")
-data class User (val name: String? = null, val password: String? = null,
+data class User (val username: String? = null, val password: String? = null,
                  @Id @GeneratedValue(strategy = GenerationType.AUTO) val id: Long? = null)
