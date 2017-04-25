@@ -11,7 +11,7 @@ const isProduction = nodeEnv === 'production';
 const package_json = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 const dependencies = Object.getOwnPropertyNames(package_json.dependencies);
 
-const buildPath = path.join(__dirname, '../build');
+const buildPath = path.join(__dirname, '../../backend/src/main/resources/static');
 const imgPath = path.join(__dirname, './src/assets/img');
 
 const extractSass = new ExtractTextPlugin({

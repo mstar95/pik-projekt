@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --progress --config config/webpack.config.js",
-    "build": "rimraf build && cross-env NODE_ENV=production webpack -p --progress --config config/webpack.config.js",
+    "build": "rimraf ../backend/src/main/resources/static && cross-env NODE_ENV=production webpack -p --progress --config config/webpack.config.js",
     "test": "jest"
   },
   "license": "MIT",
