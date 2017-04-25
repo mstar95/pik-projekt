@@ -16,7 +16,6 @@ class StaticController {
     @RequestMapping(value = "/app/**")
     @ResponseBody
     fun root(): String {
-        System.out.println("ASDASDASD");
         return index.file.reader().readText();
     }
 
