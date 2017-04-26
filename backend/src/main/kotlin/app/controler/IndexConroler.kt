@@ -16,7 +16,7 @@ class IndexController {
         return "index.html"
     }
 
-    @RequestMapping(value = *arrayOf("/login/**","/tests/**","/home/**"))
+    @RequestMapping("/app/**")
     fun forward(): String {
         return "forward:/"
     }

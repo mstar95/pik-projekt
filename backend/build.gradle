@@ -44,6 +44,13 @@ run {
     dependsOn bootRun
 }
 
+bootRun {
+	systemProperty "JDBC_DATABASE_URL", "jdbc:postgresql://localhost:5432/postgres"
+	systemProperty "JDBC_DATABASE_USERNAME", "postgres"
+	systemProperty "JDBC_DATABASE_PASSWORD", "123456"
+	systemProperty "PORT", 9000
+}
+
 jacocoCoverage {
     // Enforce minimum code coverage of 50% for every Java file.
     fileThreshold 0.0
