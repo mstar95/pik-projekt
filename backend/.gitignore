@@ -1,5 +1,5 @@
-### Configuration ###
-src/main/resources/application.properties
+### Compiled front-end ###
+src/main/resources/static
 
 ### Gradle ###
 .gradle

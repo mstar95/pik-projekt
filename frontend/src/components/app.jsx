@@ -5,12 +5,12 @@ import Login from './Login';
 import NotFound from './NotFound';
 
 const App = () => (
-  <Router>
+  <Router basename="/app">
     <Switch>
       <Redirect exact from='/' to='/home'/>
       <Route exact path="/home" component={Home} />
       <Route exact path="/login" component={Login} />
-      <Route path="*" component={NotFound} />
+      <Route path="/*" component={NotFound} />
     </Switch>
   </Router>
 )
