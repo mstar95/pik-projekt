@@ -10,8 +10,8 @@ import javax.persistence.*
 @Table(name="\"Test\"")
 data class Test (val title: String? = null,
                  val ownerId: Long? = null,
-                 @OneToMany  @JoinColumn(name = "testId")
-                 var questions: List<Question>? = null,
+                 @OneToMany(mappedBy = "test", cascade = arrayOf(CascadeType.ALL))
+                 var questions: List<Question>? =null,
                  @Id @GeneratedValue(strategy = GenerationType.AUTO) val id: Long? = null)
 
 

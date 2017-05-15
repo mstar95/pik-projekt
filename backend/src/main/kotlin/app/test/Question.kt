@@ -6,8 +6,10 @@ import javax.persistence.*
  * Created by michal on 15/05/2017.
  */
 @Entity
-@Table(name="\"Test\"")
+@Table(name="\"Question\"")
 data class Question (val title: String? = null,
-                     val testId: Long? = null,
-                     @OneToMany  @JoinColumn(name = "questionId") val answers:  List<Answer>? = null,
+                     @ManyToOne  @JoinColumn(name = "test")
+                     val test: Test? = null,
+                 //    @OneToMany(mappedBy = "question_d", cascade = arrayOf(CascadeType.ALL))
+                 //    val answers:  List<Answer>? = null,
                      @Id @GeneratedValue(strategy = GenerationType.AUTO) val id: Long? = null)
