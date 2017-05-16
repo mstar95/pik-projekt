@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Home from './Home';
 import Login from './Login';
+import Test from './Test';
 import NotFound from './NotFound';
 
 const App = () => (
@@ -10,6 +11,7 @@ const App = () => (
       <Redirect exact from='/' to='/home'/>
       <Route exact path="/home" component={Home} />
       <Route exact path="/login" component={Login} />
+      <Route exact path="/test" component={Test} />
       <Route path="/*" component={NotFound} />
     </Switch>
   </Router>

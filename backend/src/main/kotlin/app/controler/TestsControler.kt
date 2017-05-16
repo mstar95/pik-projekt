@@ -47,5 +47,11 @@ class TestsControler{
         return testRepository.findByUserId(id);
     }
 
+    @GetMapping("/api/default_test")
+    @ResponseBody
+    fun getTest():  Test? {
+            return testRepository.findAll().lastOrNull();
+    }
+
 
 }
