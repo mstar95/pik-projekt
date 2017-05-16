@@ -1,5 +1,6 @@
 package app.test
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 
 /**
@@ -8,8 +9,10 @@ import javax.persistence.*
 @Entity
 @Table(name="\"Question\"")
 data class Question (val title: String? = null,
-                     @ManyToOne  @JoinColumn(name = "test")
+
+                     @ManyToOne  @JoinColumn(name = "test_id")
+                     @JsonIgnore
                      val test: Test? = null,
-                 //    @OneToMany(mappedBy = "question_d", cascade = arrayOf(CascadeType.ALL))
-                 //    val answers:  List<Answer>? = null,
+                     @OneToMany(mappedBy = "question", cascade = arrayOf(CascadeType.ALL))
+                     var answers:  List<Answer>? = null,
                      @Id @GeneratedValue(strategy = GenerationType.AUTO) val id: Long? = null)

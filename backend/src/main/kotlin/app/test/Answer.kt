@@ -1,5 +1,6 @@
 package app.test
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 
 /**
@@ -8,6 +9,8 @@ import javax.persistence.*
 @Entity
 @Table(name="\"Answer\"")
 data class Answer (val title: String? = null,
-                   val testId: Long? = null,
+                   @ManyToOne  @JoinColumn(name = "question_id")
+                   @JsonIgnore
+                   val question: Question? = null,
                    val isRightAnser: Boolean? = false,
                    @Id @GeneratedValue(strategy = GenerationType.AUTO) val id: Long? = null)

@@ -1,5 +1,7 @@
 package app.test
 
+import app.user.User
+import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 
 /**
@@ -9,7 +11,8 @@ import javax.persistence.*
 @Entity
 @Table(name="\"Test\"")
 data class Test (val title: String? = null,
-                 val ownerId: Long? = null,
+                 @ManyToOne  @JoinColumn(name = "user_id")  @JsonIgnore
+                 var user: User? = null,
                  @OneToMany(mappedBy = "test", cascade = arrayOf(CascadeType.ALL))
                  var questions: List<Question>? =null,
                  @Id @GeneratedValue(strategy = GenerationType.AUTO) val id: Long? = null)
