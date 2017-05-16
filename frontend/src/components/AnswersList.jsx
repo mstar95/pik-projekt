@@ -11,15 +11,15 @@ class AnswersList extends React.Component {
 
   render() {
      return (
-		<ul>
+		<select>
 		  {
-			this.props.answers.map((answer) => {
-			  return <li key={answer.id}>
-				<h2>{item.title}</h2>
-			  </li>
+			this.props.answers.map((answer, index) => {
+			  return <option key={index} value={answer.id}>
+				{answer.title}
+			  </option>
 			})
 		  }
-		</ul>
+		</select>
 	 );
   }
 }

@@ -12,17 +12,19 @@ class TestForm extends React.Component {
   }
 
   render() {
+	  console.log(this.props);
      return (
-		<ul>
+		<form>
 		  {
 			this.props.questions.map((item) => {
-			  return <li key={item.id}>
+			  return <div key={item.id}>
 				<h2>{item.title}</h2>
 				<AnswersList answers={item.answers}></AnswersList>
-			  </li>
+			  </div>
 			})
 		  }
-		</ul>
+		  <button type="submit" onClick={console.log("i am happy")}>Submit</button>
+		</form>
 	 );
   }
 }

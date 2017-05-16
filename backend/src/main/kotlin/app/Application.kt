@@ -27,12 +27,35 @@ class Application {
 
 
         var questions = listOf(
-            Question("Question 1", test),
-            Question("Question 2", test),
-            Question("Question 3", test)
+            Question("Question A", test),
+            Question("Question B", test),
+            Question("Question C", test)
         )
-        var answers= listOf(Answer(title = "Siema", question = questions[0]))
-        questions[0].answers= answers
+        var answers1= listOf(
+                Answer(title = "Opcja A1", question = questions[0]),
+                Answer(title = "Opcja A2", question = questions[0]),
+                Answer(title = "Opcja A3", question = questions[0]),
+                Answer(title = "Opcja A4", question = questions[0])
+        )
+        questions[0].answers= answers1
+
+        var answers2= listOf(
+                Answer(title = "Opcja B1", question = questions[1]),
+                Answer(title = "Opcja B2", question = questions[1]),
+                Answer(title = "Opcja B3", question = questions[1]),
+                Answer(title = "Opcja B4", question = questions[1])
+        )
+        questions[1].answers= answers2
+
+        var answers3= listOf(
+                Answer(title = "Opcja C1", question = questions[2]),
+                Answer(title = "Opcja C2", question = questions[2]),
+                Answer(title = "Opcja C3", question = questions[2]),
+                Answer(title = "Opcja C4", question = questions[2])
+        )
+        questions[2].answers= answers3
+        
+        
         test.questions = questions;
         user.tests= listOf(test)
         userRepository.save(user)

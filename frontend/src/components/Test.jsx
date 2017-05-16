@@ -8,30 +8,11 @@ class Test extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      title:"tytul",
-      questions:[
-        {
-          id: 1,
-          title: "Questiads"
-        },
-        {
-          id: 2,
-          title: "Questisdasdasddsaasad"
-        },
-        {
-          id: 3,
-           title: "Quesassadsa 4"
-        }
-      ]
-    };
-    this.getTest = this.getTest.bind(this);
+    this.getTest();
     
   }
 
-  getTest(event) {
-    event.preventDefault();
-
+  getTest() {
     return axios.get('/api/default_test')
 				  .then(response => this.setState(response.data))
 				  .catch(error => console.log(error));
@@ -40,11 +21,13 @@ class Test extends React.Component {
   render() {
     return (
       <PageWrapper>
-       <div className="page-contentpage-content">
-		   <h1>Test:{this.state.title}</h1> 
-      <TestForm questions={this.state.questions}/>		 
-            <button type="submit" className="btn btn-success" onClick={this.getTest}>Fill test</button>
-        </div>
+        {this.state ?
+           <div className="page-content">
+             <h1>Test:{this.state.title}</h1> 
+            <TestForm questions={this.state.questions}/> 
+           </div>
+          : <p>Loading...</p>
+        }
       </PageWrapper>
     )
   }
