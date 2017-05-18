@@ -9,12 +9,11 @@ import org.springframework.stereotype.Service
 @Service
 class TestService {
     @Autowired
-    lateinit var testRepository: TestRepository
+    lateinit var answerRepository: AnswerRepository
     fun verifyTest(solvedTest:Map<String,Int>) :HashMap<String,Boolean?>{
-        val answerTest =  testRepository.findAll().lastOrNull()
-        val verifiedTest = hashMapOf<String,Boolean?>()
+        var verifiedTest = hashMapOf<String,Boolean?>()
         for((k, v)in solvedTest) {
-            verifiedTest[k] = answerTest!!.questions!![k.toInt()].answers!![v].isRightAnser
+            verifiedTest[k] = answerRepository.findOne(v.toLong())!!.isRightAnser
         }
         return verifiedTest
     }

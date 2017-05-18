@@ -32,7 +32,7 @@ class Application {
             Question("Question C", test)
         )
         var answers1= listOf(
-                Answer(title = "Opcja A1", question = questions[0]),
+                Answer(title = "Opcja A1", question = questions[0],isRightAnser = true),
                 Answer(title = "Opcja A2", question = questions[0]),
                 Answer(title = "Opcja A3", question = questions[0]),
                 Answer(title = "Opcja A4", question = questions[0])
@@ -41,7 +41,7 @@ class Application {
 
         var answers2= listOf(
                 Answer(title = "Opcja B1", question = questions[1]),
-                Answer(title = "Opcja B2", question = questions[1]),
+                Answer(title = "Opcja B2", question = questions[1],isRightAnser = true),
                 Answer(title = "Opcja B3", question = questions[1]),
                 Answer(title = "Opcja B4", question = questions[1])
         )
@@ -50,7 +50,7 @@ class Application {
         var answers3= listOf(
                 Answer(title = "Opcja C1", question = questions[2]),
                 Answer(title = "Opcja C2", question = questions[2]),
-                Answer(title = "Opcja C3", question = questions[2]),
+                Answer(title = "Opcja C3", question = questions[2],isRightAnser = true),
                 Answer(title = "Opcja C4", question = questions[2])
         )
         questions[2].answers= answers3

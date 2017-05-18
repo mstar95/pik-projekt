@@ -23,18 +23,16 @@ class Test extends React.Component {
   }
 
   submit(values) {
-    let data = {};
+    var question = {}
     for(let key in values) {
-      data[key.substring(1)] = values[key]
-    }
-
-    var response = axios({
+           question[key.substring(1)] = values[key];
+       }
+    axios({
       method: 'post',
       url: '/api/verify_test',
-      data: data
-    })
-
-    this.dispatch(testResults(response));
+      data: question
+      }).catch(error => console.log(error))
+      .then(this.dispatch(testResults(response.data)))
   }
 
   render() {
