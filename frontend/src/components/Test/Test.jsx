@@ -9,6 +9,8 @@ class Test extends React.Component {
   constructor(props) {
     super(props);
     this.dispatch = props.dispatch;
+    this.submit = this.submit.bind(this);
+
     if(!props.fetched) {
       this.getTest();
     }
@@ -20,13 +22,20 @@ class Test extends React.Component {
       .then(response => this.dispatch(testFetchSuccess(response.data)));
   }
 
+  submit(values) {
+    console.log('test submit', values);
+  }
+
   render() {
     let content;
     if(!this.props.loading) {
       content = (
         <div>
           <h1>Test:{this.props.test.title}</h1>
-          <TestForm questions={this.props.test.questions}/>
+          <TestForm
+            questions={this.props.test.questions}
+            onSubmit={this.submit}
+          />
         </div>
       );
     } else {
