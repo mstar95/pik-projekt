@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Home from './Home';
 import Login from './Login';
-import Test from './Test';
+import Test from './Test/Test';
 import NotFound from './NotFound';
 
 const App = () => (
