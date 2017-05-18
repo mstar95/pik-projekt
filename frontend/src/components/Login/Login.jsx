@@ -37,10 +37,13 @@ class Login extends React.Component {
     } else {
       message = "Not logged in";
     }
+
     return (
       <PageWrapper>
-        <LoginForm onSubmit={this.submit} />
-        { message }
+        <div className="page-content">
+          <LoginForm onSubmit={this.submit} />
+          { message }
+        </div>
       </PageWrapper>
     );
   }
