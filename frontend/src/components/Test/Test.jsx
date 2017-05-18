@@ -23,10 +23,12 @@ class Test extends React.Component {
   }
 
   submit(values) {
-    var response = {};
-    for(let key in values) {
-      response[key.substring(1)] = Math.random() > 0.5;
-    }
+    var response = axios({
+      method: 'post',
+      url: '/api/verify_test',
+      data: values
+      })
+
     this.dispatch(testResults(response));
   }
 
