@@ -32,7 +32,7 @@ class Test extends React.Component {
       url: '/api/verify_test',
       data: question
       }).catch(error => console.log(error))
-      .then(this.dispatch(testResults(response.data)))
+      .then(response => this.dispatch(testResults(response.data)))
   }
 
   render() {
