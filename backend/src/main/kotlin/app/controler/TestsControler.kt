@@ -2,6 +2,7 @@ package app.controler
 
 import app.test.Test
 import app.test.TestRepository
+import app.test.TestService
 import app.user.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
@@ -16,6 +17,8 @@ class TestsControler{
     lateinit var testRepository: TestRepository
     @Autowired
     lateinit var userRepository: UserRepository
+    @Autowired
+    lateinit var testService: TestService
     @GetMapping("/api/tests")
     @ResponseBody
     fun getTests(): MutableIterable<Test>?  {
@@ -53,5 +56,9 @@ class TestsControler{
             return testRepository.findAll().lastOrNull();
     }
 
-
+    @GetMapping("/api/verify_test/{id}")
+    @ResponseBody
+    fun verifyTest(@PathVariable test:Map<String,Int>):  Map<String,Boolean?> {
+        return testService.verifyTest(test)
+    }
 }
