@@ -29,13 +29,28 @@ class Login extends React.Component {
   }
 
   render() {
+    let message;
+    if(this.props.login.loggedIn) {
+      message = "Login successful";
+    } else if(this.props.login.failed){
+      message = "Login failed";
+    } else {
+      message = "Not logged in";
+    }
     return (
       <PageWrapper>
         <LoginForm onSubmit={this.submit} />
+        { message }
       </PageWrapper>
     );
   }
 }
-Login = connect()(Login)
+
+function mapStateToProps(state) {
+  return { login: state.login }
+}
+
+Login = connect(mapStateToProps)(Login)
+
 
 export default Login;

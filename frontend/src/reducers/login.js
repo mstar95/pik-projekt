@@ -12,7 +12,7 @@ const login = (state = defaultState, action) => {
       }
     case 'LOGIN_FAIL':
       return {
-        loggedIn: state.loggedIn,
+        loggedIn: false,
         failed: true
       }
     case 'LOGOUT':
