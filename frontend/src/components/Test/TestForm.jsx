@@ -1,9 +1,9 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
-const renderSelectField = ({ input, label, type, meta: { touched, error }, children }) => (
+const renderSelectField = ({input, required, children, touched, error}) => (
   <div>
-    <select {...input}>
+    <select {...input} required={required}>
       {children}
     </select>
     {touched && error && <span>{error}</span>}
@@ -31,7 +31,7 @@ class TestForm extends React.Component {
       return (
         <div key={question.id}>
           <h2>{question.title}</h2>
-          <Field name={question.title} component={renderSelectField} required="required">
+          <Field name={question.title} component={renderSelectField} required>
             <option value="">
               Wybierz
             </option>
@@ -41,8 +41,10 @@ class TestForm extends React.Component {
       )
     });
 
+    const {handleSubmit, pristine, submitting} = this.props
+
     return (
-      <form onSubmit={this.props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
         { fields }
         <button type="submit">Submit</button>
       </form>
