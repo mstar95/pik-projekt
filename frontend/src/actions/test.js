@@ -10,3 +10,10 @@ export const testFetchFail = () => {
     type: 'TEST_FETCH_FAIL'
   }
 }
+
+export const testResults = (results) => {
+  return {
+    type: 'TEST_RESULTS',
+    results
+  }
+}

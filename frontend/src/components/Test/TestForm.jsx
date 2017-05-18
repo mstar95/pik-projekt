@@ -17,6 +17,8 @@ class TestForm extends React.Component {
   }
 
   render() {
+    const {handleSubmit, pristine, submitting} = this.props;
+
     const fields = this.props.questions.map((question) => {
       const value = 44;
       const answers = question.answers.map((answer, index) =>
@@ -27,25 +29,44 @@ class TestForm extends React.Component {
         </option>
       );
 
-      return (
-        <div key={question.id}>
-          <h2>{question.title}</h2>
-          <Field name={question.title} component={renderSelectField} required>
+      let field;
+      if(!this.props.results) {
+        field = (
+          <Field name={'q' + question.id} component={renderSelectField} required>
             <option value="">
               Wybierz
             </option>
             { answers }
           </Field>
+        )
+      } else if(this.props.results[question.id]) {
+        field = <p>{'Udało się'}</p>
+      } else {
+        field = <p>{'Nie udało się'}</p>
+      }
+
+      return (
+        <div key={question.id}>
+          <h2>{question.title}</h2>
+          { field }
         </div>
       )
     });
 
-    const {handleSubmit, pristine, submitting} = this.props
+    let score = 0;
+    let max = this.props.questions.length;
+    for(let key in this.props.results) {
+      if(this.props.results[key]) {
+        score++;
+      }
+    }
 
     return (
         <form onSubmit={handleSubmit}>
         { fields }
         <button type="submit">Submit</button>
+
+        { this.props.results ? 'Twój wynik to: ' + score + '/' + max : "" }
       </form>
     );
   }

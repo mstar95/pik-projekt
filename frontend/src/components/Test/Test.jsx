@@ -3,7 +3,7 @@ import axios from 'axios';
 import PageWrapper from '../PageWrapper';
 import TestForm from './TestForm';
 import { connect } from 'react-redux';
-import { testFetchSuccess, testFetchFail } from '../../actions';
+import { testFetchSuccess, testFetchFail, testResults } from '../../actions';
 
 class Test extends React.Component {
   constructor(props) {
@@ -23,7 +23,11 @@ class Test extends React.Component {
   }
 
   submit(values) {
-    console.log('test submit', values);
+    var response = {};
+    for(let key in values) {
+      response[key.substring(1)] = Math.random() > 0.5;
+    }
+    this.dispatch(testResults(response));
   }
 
   render() {
@@ -35,6 +39,7 @@ class Test extends React.Component {
           <TestForm
             questions={this.props.test.questions}
             onSubmit={this.submit}
+            results={this.props.results}
           />
         </div>
       );
@@ -55,6 +60,7 @@ class Test extends React.Component {
 function mapStateToProps(state) {
   return {
     test: state.test.test,
+    results: state.test.results,
     fetched: state.test.fetched,
     loading: !state.test.fetched && !state.test.fetchFailed
   }

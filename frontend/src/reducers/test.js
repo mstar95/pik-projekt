@@ -16,6 +16,10 @@ const test = (state = defaultState, action) => {
         fetched: false,
         fetchFailed: true
       }
+    case 'TEST_RESULTS':
+      return Object.assign({}, state, {
+        results: action.results
+      })
     default:
       return state
   }
