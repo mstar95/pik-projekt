@@ -3,13 +3,13 @@ import axios from 'axios';
 import querystring from 'query-string';
 import PageWrapper from '../PageWrapper';
 import LoginForm from './LoginForm';
-import { connect } from 'react-redux'
-import { loginSuccess, loginFail } from '../../actions'
+import { connect } from 'react-redux';
+import { loginSuccess, loginFail } from '../../actions';
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.dispatch = this.props.dispatch;
+    this.dispatch = props.dispatch;
     this.submit = this.submit.bind(this);
   }
 

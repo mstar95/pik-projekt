@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import login from './login';
 import { reducer as formReducer } from 'redux-form';
+import login from './login';
+import test from './test';
 
 const combined = combineReducers({
+  form: formReducer,
   login,
-  form: formReducer
+  test
 })
 
 export default combined

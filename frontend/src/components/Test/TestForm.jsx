@@ -17,7 +17,7 @@ class TestForm extends React.Component {
             <AnswersList answers={item.answers}></AnswersList>
           </div>
         )}
-        <button type="submit" onClick={console.log("i am happy")}>Submit</button>
+        <button type="submit">Submit</button>
       </form>
     );
   }
