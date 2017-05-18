@@ -56,9 +56,9 @@ class TestsControler{
             return testRepository.findAll().lastOrNull();
     }
 
-    @GetMapping("/api/verify_test/{id}")
+    @PostMapping("/api/verify_test")
     @ResponseBody
-    fun verifyTest(@PathVariable test:Map<String,Int>):  Map<String,Boolean?> {
+    fun verifyTest(@RequestBody test:Map<String,Int>):  Map<String,Boolean?> {
         return testService.verifyTest(test)
     }
 }
