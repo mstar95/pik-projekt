@@ -5,6 +5,7 @@ import app.test.TestRepository
 import app.test.TestService
 import app.user.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.web.bind.annotation.*
 import javax.annotation.PostConstruct
 
@@ -59,6 +60,7 @@ class TestsControler{
     @PostMapping("/api/verify_test")
     @ResponseBody
     fun verifyTest(@RequestBody test:Map<String,Int>):  Map<String,Boolean?> {
-        return testService.verifyTest(test)
+        return testService.verifyTest(test,0)
     }
+
 }

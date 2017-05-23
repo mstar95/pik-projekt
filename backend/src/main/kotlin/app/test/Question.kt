@@ -9,9 +9,7 @@ import javax.persistence.*
 @Entity
 @Table(name="\"Question\"")
 data class Question (val title: String? = null,
-
-                     @ManyToOne  @JoinColumn(name = "test_id")
-                     @JsonIgnore
+                     @ManyToOne  @JoinColumn(name = "test_id") @JsonIgnore
                      val test: Test? = null,
                      @OneToMany(mappedBy = "question", cascade = arrayOf(CascadeType.ALL))
                      var answers:  List<Answer>? = null,
