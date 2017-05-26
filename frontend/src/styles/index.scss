@@ -54,9 +54,13 @@ body {
   padding: 30px;
   margin: 0 auto;
   border: 3px solid $theme-white;
+
+  @media only screen and (max-width: 540px) {
+    width: auto;
+    margin: 0 20px;
+  }
 }
 
-.page-header,
 .page-info {
   font-size: 0.7rem;
   margin: 0;
@@ -65,11 +69,11 @@ body {
 }
 
 ::-moz-selection {
-  background-color: darken($theme-secondary, 20%);
+  background-color: darken($theme-primary, 20%);
   color: $text-primary;
 }
 
 ::selection {
-  background-color: darken($theme-secondary, 20%);
+  background-color: darken($theme-primary, 20%);
   color: $text-primary;
 }

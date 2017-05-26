@@ -40,7 +40,8 @@ class Test extends React.Component {
     if(!this.props.loading) {
       content = (
         <div>
-          <h1>Test:{this.props.test.title}</h1>
+          <p className="page-info">{"Question 1 of 20"}</p>
+          <h1>{this.props.test.title}</h1>
           <TestForm
             questions={this.props.test.questions}
             onSubmit={this.submit}
@@ -49,7 +50,7 @@ class Test extends React.Component {
         </div>
       );
     } else {
-      content = <p>{'Loading...'}</p>
+      content = <p className="page-info">{'Loading...'}</p>
     }
 
     return (

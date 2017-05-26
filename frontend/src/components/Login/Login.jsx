@@ -41,7 +41,7 @@ class Login extends React.Component {
     return (
       <PageWrapper>
         <div className="page-item">
-          <h1 className="page-header">Login</h1>
+          <h1 className="page-info">Login</h1>
           <LoginForm onSubmit={this.submit} />
           <p className="page-info">{ message }</p>
         </div>
