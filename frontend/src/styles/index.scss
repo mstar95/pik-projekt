@@ -7,6 +7,14 @@ html,
 body {
   width: 100%;
   height: 100%;
+
+  overflow-x: hidden;
+}
+
+#root,
+div[data-reactroot],
+.page-wrapper {
+  height: 100%;
 }
 
 body {
@@ -24,11 +32,19 @@ body {
 }
 
 .page-wrapper {
-  padding-top: $navbar-height;
+  box-sizing: border-box;
+  position: relative;
+  padding-top: 70px;
+  left: 0;
+
+  transition: left .25s ease-in-out;
+  -webkit-transition: left .25s ease-in-out;
+  -moz-transition: left .25s ease-in-out;
+  -o-transition: left .25s ease-in-out;
 }
 
-.page-content {
-  padding: 1rem $navbar-padding;
+.page-wrapper.pushed {
+  left: 150px;
 }
 
 .page-item {
@@ -46,4 +62,14 @@ body {
   margin: 0;
   text-transform: uppercase;
   font-family: sans-serif;
+}
+
+::-moz-selection {
+  background-color: darken($theme-secondary, 20%);
+  color: $text-primary;
+}
+
+::selection {
+  background-color: darken($theme-secondary, 20%);
+  color: $text-primary;
 }

@@ -13,6 +13,12 @@
   line-height: 0;
   font-size: 23px;
   padding-left: 8px;
+
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
 }
 
 .login-button:focus {
