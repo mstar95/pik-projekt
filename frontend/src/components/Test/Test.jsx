@@ -54,7 +54,7 @@ class Test extends React.Component {
 
     return (
       <PageWrapper>
-        <div className='page-content'>
+        <div className='page-item'>
           { content }
         </div>
       </PageWrapper>

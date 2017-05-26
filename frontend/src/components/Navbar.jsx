@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { menuToggle } from '../actions';
 
 let Navbar = (props) => {
   let list;
@@ -21,9 +22,16 @@ let Navbar = (props) => {
     )
   }
 
+  let open = props.open ? " open": "";
+
   return (
-    <nav className="navbar">
-      <a className="navbar-button">X</a>
+    <nav className={"navbar" + open}>
+      <a className={"navbar-button" + open} onClick={() => props.dispatch(menuToggle())}>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
       {list}
     </nav>
   )
@@ -31,7 +39,8 @@ let Navbar = (props) => {
 
 function mapStateToProps(state) {
   return {
-    loggedIn: state.login.loggedIn,
+    open: state.navbar.open,
+    loggedIn: state.login.loggedIn
   }
 }
 
