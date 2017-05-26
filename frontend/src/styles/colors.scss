@@ -1,7 +1,7 @@
-$theme-primary: #F52F57;
-$theme-secondary: #FAEDCA;
+$theme-primary: rgb(253, 91, 77);
+$theme-secondary: rgb(172, 79, 115);
+$theme-white: #fafafa;
+$theme-black: #222;
 
-$background-primary: $theme-secondary;
-
-$text-primary: #222;
-$text-secondary: #fafafa;
+$text-primary: $theme-white;
+$text-secondary: $theme-black;

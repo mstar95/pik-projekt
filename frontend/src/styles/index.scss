@@ -1,5 +1,7 @@
 @import './colors.scss';
 @import './navbar.scss';
+@import './form.scss';
+@import './login.scss';
 
 html,
 body {
@@ -9,10 +11,16 @@ body {
 
 body {
   color: $text-primary;
-  background-color: $background-primary;
+  background-color: $theme-primary;
 
   padding: 0;
   margin: 0;
+
+  background-color: #d55560;
+  background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0, $theme-primary),color-stop(1, $theme-secondary));
+  background-image: -webkit-repeating-linear-gradient(top left,$theme-primary 0%,$theme-secondary 100%);
+  background-image: repeating-linear-gradient(to bottom right,$theme-primary 0%,$theme-secondary 100%);
+  background-image: -ms-repeating-linear-gradient(top left,$theme-primary 0%,$theme-secondary 100%);
 }
 
 .page-wrapper {
@@ -21,4 +29,21 @@ body {
 
 .page-content {
   padding: 1rem $navbar-padding;
+}
+
+.page-item {
+  display: block;
+  box-sizing: border-box;
+  width: 500px;
+  padding: 30px;
+  margin: 0 auto;
+  border: 3px solid $theme-white;
+}
+
+.page-header,
+.page-info {
+  font-size: 0.7rem;
+  margin: 0;
+  text-transform: uppercase;
+  font-family: sans-serif;
 }

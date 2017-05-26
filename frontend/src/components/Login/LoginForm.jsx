@@ -4,16 +4,16 @@ import { Field, reduxForm } from 'redux-form';
 class LoginForm extends React.Component {
   render() {
     return (
-      <form onSubmit={this.props.handleSubmit}>
-        <div>
-          <label htmlFor="username">First Name</label>
-          <Field name="username" component="input" type="text" />
+      <form onSubmit={this.props.handleSubmit} className="form">
+        <div className="form-field">
+          <Field name="username" component="input" type="text" placeholder="Username" />
         </div>
-        <div>
-          <label htmlFor="password">Last Name</label>
-          <Field name="password" component="input" type="password" />
+        <div className="form-field">
+          <Field name="password" component="input" type="password" placeholder="Password" />
         </div>
-        <button type="submit">Submit</button>
+        <div className="login-button-wrapper">
+          <button type="submit" className="login-button">&#9658;</button>
+        </div>
       </form>
     );
   }
