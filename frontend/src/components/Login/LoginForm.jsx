@@ -6,10 +6,10 @@ class LoginForm extends React.Component {
     return (
       <form onSubmit={this.props.handleSubmit} className="form">
         <div className="form-field">
-          <Field name="username" component="input" type="text" placeholder="Username" />
+          <Field name="username" component="input" type="text" placeholder="Username" required />
         </div>
         <div className="form-field">
-          <Field name="password" component="input" type="password" placeholder="Password" />
+          <Field name="password" component="input" type="password" placeholder="Password" required />
         </div>
         <div className="login-button-wrapper">
           <button type="submit" className="login-button">&#9658;</button>
