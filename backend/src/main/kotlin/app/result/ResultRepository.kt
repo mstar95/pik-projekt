@@ -7,4 +7,5 @@ import org.springframework.data.repository.CrudRepository
  */
 
 interface ResultRepository : CrudRepository<Result, Long> {
+    fun findByUserId(userId:Long): MutableIterable<Result>
 }

@@ -20,16 +20,16 @@ class TestService {
     lateinit var questionRepository: QuestionRepository
     lateinit var resultRepository: ResultRepository
     fun verifyTest(solvedTest : Map<String,Int>,id : Long) :HashMap<String,Boolean?>{
-        var verifiedTest = hashMapOf<String,Boolean?>()
-        var result = Result()
+        val verifiedTest = hashMapOf<String,Boolean?>()
+        val result = Result()
         result.test = testRepository.findOne(id)
         val userName  = SecurityContextHolder.getContext().getAuthentication().name
         result.user = userRepository.findByUsername(userName)
-        var questions :MutableList<QuestionResult> = mutableListOf()
+        val questions :MutableList<QuestionResult> = mutableListOf()
         for((k, v)in solvedTest) {
-            var answer = answerRepository.findOne(v.toLong())
-            var question = questionRepository.findOne(k.toLong())
-            var questionResult = QuestionResult(question,answer)
+            val answer = answerRepository.findOne(v.toLong())
+            val question = questionRepository.findOne(k.toLong())
+            val questionResult = QuestionResult(question,answer)
             questions.add(questionResult)
             verifiedTest[k] = answer!!.isRightAnser
         }
@@ -37,6 +37,5 @@ class TestService {
         resultRepository.save(result)
         return verifiedTest
     }
-
 }
 
