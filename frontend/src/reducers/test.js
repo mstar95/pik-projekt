@@ -27,9 +27,12 @@ const test = (state = defaultState, action) => {
         results: action.results
       })
     case 'TEST_ANSWERS':
+      let question = Object.keys(action.answers).length;
+      let done = question >= state.test.questions.length;
       return Object.assign({}, state, {
-        question: Object.keys(action.answers).length,
-        answers: action.answers
+        question,
+        answers: action.answers,
+        done
       })
     default:
       return state
