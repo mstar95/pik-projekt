@@ -1,20 +1,22 @@
 const defaultState = {
-  fetched: false,
-  fetchFailed: false
+  loading: true,
+  error: false
 }
 
 const test = (state = defaultState, action) => {
   switch (action.type) {
+    case 'TEST_FETCH_START':
+      return defaultState;
     case 'TEST_FETCH_SUCCESS':
       return {
-        fetched: true,
-        fetchFailed: false,
+        loading: false,
+        error: false,
         test: action.test
       }
     case 'TEST_FETCH_FAIL':
       return {
-        fetched: false,
-        fetchFailed: true
+        loading: false,
+        error: true
       }
     case 'TEST_RESULTS':
       return Object.assign({}, state, {

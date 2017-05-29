@@ -3,52 +3,59 @@ import axios from 'axios';
 import PageWrapper from '../PageWrapper';
 import TestForm from './TestForm';
 import { connect } from 'react-redux';
-import { testFetchSuccess, testFetchFail, testResults } from '../../actions';
+import { testFetchStart, testFetchSuccess, testFetchFail, testResults } from '../../actions';
 
 class Test extends React.Component {
   constructor(props) {
     super(props);
-    this.dispatch = props.dispatch;
     this.submit = this.submit.bind(this);
 
-    if(!props.fetched) {
-      this.getTest();
-    }
+    this.getTest(this.props.match.params.id);
   }
 
-  getTest() {
-    return axios.get('/api/default_test')
-      .catch(error => this.dispatch(testFetchFail()))
-      .then(response => this.dispatch(testFetchSuccess(response.data)));
+  getTest(id) {
+    let { dispatch } = this.props;
+
+    dispatch(testFetchStart());
+
+    return axios.get('/api/test/' + id)
+      .catch(error => dispatch(testFetchFail()))
+      .then(response => dispatch(testFetchSuccess(response.data)));
   }
 
   submit(values) {
+    let { dispatch } = this.props;
+
     var question = {}
     for(let key in values) {
-           question[key.substring(1)] = values[key];
-       }
+      question[key.substring(1)] = values[key];
+    }
     axios({
       method: 'post',
       url: '/api/verify_test',
       data: question
-      }).catch(error => console.log(error))
-      .then(response => this.dispatch(testResults(response.data)))
+    }).catch(error => console.log(error))
+      .then(response => dispatch(testResults(response.data)))
   }
 
   render() {
+    let { loading, error, test, results } = this.props;
+
     let content;
-    if(!this.props.loading) {
+    if(!loading && !error) {
       content = (
         <div>
           <p className="page-info">{"Question 1 of 20"}</p>
-          <h1>{this.props.test.title}</h1>
+          <h1>{test.title}</h1>
           <TestForm
-            questions={this.props.test.questions}
+            questions={test.questions}
             onSubmit={this.submit}
-            results={this.props.results}
+            results={results}
           />
         </div>
       );
+    } else if(error) {
+      content = <p>Error</p>
     } else {
       content = <p className="page-info">{'Loading...'}</p>
     }
@@ -67,8 +74,8 @@ function mapStateToProps(state) {
   return {
     test: state.test.test,
     results: state.test.results,
-    fetched: state.test.fetched,
-    loading: !state.test.fetched && !state.test.fetchFailed
+    error: state.test.error,
+    loading: state.test.loading
   }
 }
 

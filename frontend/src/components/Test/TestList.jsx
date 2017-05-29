@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import PageWrapper from '../PageWrapper';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { testListFetchStart, testListFetchSuccess, testListFetchFail } from '../../actions';
 
@@ -31,9 +32,9 @@ class TestList extends React.Component {
     } else {
       console.log(tests);
       let testListItems = tests.map(test => (
-        <li key={test.id}>{test.title}</li>
+        <li key={test.id}><NavLink to={'/test/' + test.id}>{test.title}</NavLink></li>
       ));
-      content = <ul>{testListItems}</ul>
+      content = <ul className='link-list'>{testListItems}</ul>
     }
 
     return (

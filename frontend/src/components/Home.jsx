@@ -3,7 +3,10 @@ import PageWrapper from './PageWrapper';
 
 const Home = () => (
   <PageWrapper>
-    Home
+    <div className='page-item'>
+      <h1 className='page-info'>Home</h1>
+      {'Welcome home'}
+    </div>
   </PageWrapper>
 )
 

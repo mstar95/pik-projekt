@@ -2,6 +2,7 @@
 @import './navbar.scss';
 @import './form.scss';
 @import './login.scss';
+@import './linklist.scss';
 
 html,
 body {
@@ -19,7 +20,6 @@ div[data-reactroot],
 
 body {
   color: $text-primary;
-  background-color: $theme-primary;
 
   padding: 0;
   margin: 0;

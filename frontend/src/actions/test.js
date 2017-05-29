@@ -1,3 +1,9 @@
+export const testFetchStart = () => {
+  return {
+    type: 'TEST_FETCH_START'
+  }
+}
+
 export const testFetchSuccess = (test) => {
   return {
     type: 'TEST_FETCH_SUCCESS',
