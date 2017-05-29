@@ -12,6 +12,7 @@ import javax.persistence.*
 data class User (val username: String? = null,
                  @JsonIgnore
                  val password: String? = null,
+                 val authority: String? = null,
                  @OneToMany(mappedBy = "user", cascade = arrayOf(CascadeType.ALL))
                  var tests: List<Test>? = null,
                  @Id

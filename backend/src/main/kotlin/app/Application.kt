@@ -18,12 +18,13 @@ class Application {
     open fun init(userRepository: UserRepository, testRepository: TestRepository) = CommandLineRunner { var logger = LoggerFactory.getLogger(Application::class.java)
         userRepository.deleteAll()
 
-        var user=User("user", "password");
+        var user=User("user", "password","USER")
+        var admin=User("admin", "password","ADMIN")
 //        if(userRepository.findByUsername("user") == null) {
 //            userRepository.save(user)
 //        }
         var test = Test(title = "Test1")
-        test.user=user;
+        test.user=user
 
 
         var questions = listOf(
@@ -59,6 +60,7 @@ class Application {
         test.questions = questions;
         user.tests= listOf(test)
         userRepository.save(user)
+        userRepository.save(admin)
     }
 }
 

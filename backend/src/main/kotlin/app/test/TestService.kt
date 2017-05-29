@@ -15,14 +15,19 @@ import org.springframework.stereotype.Service
 class TestService {
     @Autowired
     lateinit var answerRepository: AnswerRepository
+    @Autowired
     lateinit var userRepository: UserRepository
+    @Autowired
     lateinit var testRepository: TestRepository
+    @Autowired
     lateinit var questionRepository: QuestionRepository
+    @Autowired
     lateinit var resultRepository: ResultRepository
     fun verifyTest(solvedTest : Map<String,Int>,id : Long) :HashMap<String,Boolean?>{
         val verifiedTest = hashMapOf<String,Boolean?>()
         val result = Result()
-        result.test = testRepository.findOne(id)
+        val test = testRepository.findAll().lastOrNull()
+        result.test = test
         val userName  = SecurityContextHolder.getContext().getAuthentication().name
         result.user = userRepository.findByUsername(userName)
         val questions :MutableList<QuestionResult> = mutableListOf()

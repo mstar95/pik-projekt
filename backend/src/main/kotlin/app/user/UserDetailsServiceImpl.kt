@@ -25,7 +25,7 @@ class UserDetailsServiceImpl : UserDetailsService {
     override fun loadUserByUsername(username: String): UserDetails {
         val user = userRepository!!.findByUsername(username)
         val grantedAuthorities = HashSet<GrantedAuthority>()
-        grantedAuthorities.add(SimpleGrantedAuthority("USER"))
+        grantedAuthorities.add(SimpleGrantedAuthority(user.authority))
 
         return org.springframework.security.core.userdetails.User(user.username!!, user.password!!, grantedAuthorities)
     }
