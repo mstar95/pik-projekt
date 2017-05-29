@@ -17,6 +17,13 @@ export const testFetchFail = () => {
   }
 }
 
+export const testAnswers = (answers) => {
+  return {
+    type: 'TEST_ANSWERS',
+    answers
+  }
+}
+
 export const testResults = (results) => {
   return {
     type: 'TEST_RESULTS',

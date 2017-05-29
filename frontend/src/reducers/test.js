@@ -1,6 +1,8 @@
 const defaultState = {
   loading: true,
-  error: false
+  error: false,
+  done: false,
+  question: 0
 }
 
 const test = (state = defaultState, action) => {
@@ -11,7 +13,9 @@ const test = (state = defaultState, action) => {
       return {
         loading: false,
         error: false,
-        test: action.test
+        test: action.test,
+        done: false,
+        question: 0
       }
     case 'TEST_FETCH_FAIL':
       return {
@@ -21,6 +25,11 @@ const test = (state = defaultState, action) => {
     case 'TEST_RESULTS':
       return Object.assign({}, state, {
         results: action.results
+      })
+    case 'TEST_ANSWERS':
+      return Object.assign({}, state, {
+        question: Object.keys(action.answers).length,
+        answers: action.answers
       })
     default:
       return state

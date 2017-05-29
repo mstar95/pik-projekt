@@ -30,7 +30,6 @@ class TestList extends React.Component {
     } else if (error) {
       content = <p>{'Error'}</p>
     } else {
-      console.log(tests);
       let testListItems = tests.map(test => (
         <li key={test.id}><NavLink to={'/test/' + test.id}>{test.title}</NavLink></li>
       ));
