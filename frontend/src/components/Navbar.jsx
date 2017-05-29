@@ -16,7 +16,7 @@ let Navbar = (props) => {
     list = (
       <ul>
         <li><NavLink to="/home">Home</NavLink></li>
-        <li><NavLink to="/test">Test</NavLink></li>
+        <li><NavLink to="/tests">Tests</NavLink></li>
         <li><NavLink to="/logout">Logout</NavLink></li>
       </ul>
     )

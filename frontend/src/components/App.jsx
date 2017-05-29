@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import { connect } from 'react-redux';
 import Home from './Home';
 import Login from './Login/Login';
-import Test from './Test/Test';
+import TestList from './Test/TestList';
 import NotFound from './NotFound';
 
 function checkAuth(component, loggedIn) {
@@ -22,7 +22,7 @@ let App = (props) => (
       <Redirect exact from='/' to='/home'/>
       <Route exact path="/home" component={Home} />
       <Route exact path="/login" component={Login} />
-      <Route exact path="/test" render={checkAuth(<Test />, props.loggedIn)} />
+      <Route exact path="/tests" render={checkAuth(<TestList />, props.loggedIn)} />
       <Route path="/*" component={NotFound} />
     </Switch>
   </Router>
