@@ -1,5 +1,7 @@
 package app
 
+import app.result.QuestionResultRepository
+import app.result.ResultRepository
 import app.test.Answer
 import app.test.Question
 import app.test.Test
@@ -15,9 +17,10 @@ import org.springframework.context.annotation.Bean
 @SpringBootApplication
 class Application {
     @Bean
-    open fun init(userRepository: UserRepository, testRepository: TestRepository) = CommandLineRunner { var logger = LoggerFactory.getLogger(Application::class.java)
+    open fun init(userRepository: UserRepository, testRepository: TestRepository,resultRepository: ResultRepository,questionResultRepository: QuestionResultRepository) = CommandLineRunner { var logger = LoggerFactory.getLogger(Application::class.java)
+        questionResultRepository.deleteAll()
+        resultRepository.deleteAll()
         userRepository.deleteAll()
-
         var user=User("user", "password","USER")
         var admin=User("admin", "password","ADMIN")
 //        if(userRepository.findByUsername("user") == null) {
