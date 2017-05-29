@@ -1,5 +1,7 @@
 @import './colors.scss';
 
+$navbar-always-width: 540px + 150px * 2;
+
 .navbar {
   position: fixed;
   top: 65px;
@@ -12,10 +14,15 @@
   font-style: italic;
 
   left: -150px;
+
   transition: left .25s ease-in-out;
   -webkit-transition: left .25s ease-in-out;
   -moz-transition: left .25s ease-in-out;
   -o-transition: left .25s ease-in-out;
+
+  @media only screen and (min-width: $navbar-always-width) {
+    left: 0;
+  }
 
   ul {
     margin: 0;
@@ -52,6 +59,10 @@
   transition: 0.5s ease-in-out;
 
   cursor: pointer;
+
+  @media only screen and (min-width: $navbar-always-width) {
+    display: none;
+  }
 }
 
 .navbar.open {

@@ -31,7 +31,7 @@ class TestList extends React.Component {
     } else {
       console.log(tests);
       let testListItems = tests.map(test => (
-        <li>{test.title}</li>
+        <li key={test.id}>{test.title}</li>
       ));
       content = <ul>{testListItems}</ul>
     }
