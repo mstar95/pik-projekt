@@ -63,4 +63,10 @@ class TestsControler{
         return testService.verifyTest(test,0)
     }
 
+    @PostMapping("/api/verify_test/{id}")
+    @ResponseBody
+    fun verifyTest(@RequestBody test:Map<String,Int>,@PathVariable id:Long):  Map<String,Boolean?> {
+        return testService.verifyTest(test,id)
+    }
+
 }

@@ -34,6 +34,9 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
                 .loginPage("/api/login")
                 .successHandler(successHandler)
                 .failureHandler(failureHandler)
+                .and()
+                .logout().logoutUrl("/api/logout")
+
     }
 
     @Autowired
