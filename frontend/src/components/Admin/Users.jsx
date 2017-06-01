@@ -29,6 +29,8 @@ class Users extends React.Component {
   render() {
     let { loading, error, users } = this.props;
 
+    console.log(users);
+
     let content;
     if (loading) {
       content = <p>{'Loading...'}</p>
@@ -36,7 +38,7 @@ class Users extends React.Component {
       content = <p>{'Error'}</p>
     } else {
       let userListItems = users.map(user => (
-        <li key={user.id}><NavLink to={'/user/' + user.id}>{user.name}xxx</NavLink></li>
+        <li key={user.id}><NavLink to={'/user/' + user.id}>{user.username}</NavLink></li>
       ));
       content = <ul className='link-list'>{userListItems}</ul>
     }
