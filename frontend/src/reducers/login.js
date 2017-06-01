@@ -17,7 +17,8 @@ const login = (state = defaultState, action) => {
       }
     case 'LOGOUT':
       return {
-        loggedIn: false
+        loggedIn: false,
+        failed: false
       }
     default:
       return state
