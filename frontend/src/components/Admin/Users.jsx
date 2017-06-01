@@ -15,10 +15,15 @@ class Users extends React.Component {
   getUsers() {
     let { dispatch } = this.props;
 
+    console.log('getUsers');
+
     dispatch(userListFetchStart());
-    return axios.get('/api/tests')
+    return axios.get('/api/users')
       .then(response => dispatch(userListFetchSuccess(response.data)))
-      .catch(error => dispatch(userListFetchFail()));
+      .catch(error => {
+        console.log(error);
+        dispatch(userListFetchFail())
+      });
   }
 
   render() {
@@ -31,7 +36,7 @@ class Users extends React.Component {
       content = <p>{'Error'}</p>
     } else {
       let userListItems = users.map(user => (
-        <li key={user.id}><NavLink to={'/user/' + user.id}>{user.name}</NavLink></li>
+        <li key={user.id}><NavLink to={'/user/' + user.id}>{user.name}xxx</NavLink></li>
       ));
       content = <ul className='link-list'>{userListItems}</ul>
     }
@@ -51,7 +56,7 @@ function mapStateToProps(state) {
   return {
     loading: state.userlist.loading,
     error: state.userlist.error,
-    tests: state.userlist.users
+    users: state.userlist.users
   }
 }
 

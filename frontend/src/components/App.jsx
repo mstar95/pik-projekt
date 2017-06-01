@@ -7,6 +7,7 @@ import Logout from './Login/Logout';
 import Test from './Test/Test';
 import TestList from './Test/TestList';
 import NotFound from './NotFound';
+import Users from './Admin/Users';
 
 let App = (props) => (
   <Router basename="/app">

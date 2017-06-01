@@ -4,10 +4,10 @@ export const userListFetchStart = () => {
   }
 }
 
-export const userListFetchSuccess = (tests) => {
+export const userListFetchSuccess = (users) => {
   return {
     type: 'USER_LIST_FETCH_SUCCESS',
-    tests
+    users
   }
 }
 
