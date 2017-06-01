@@ -27,8 +27,9 @@ class MainControler {
 
     @GetMapping("/api/users")
     @ResponseBody
-    fun getHello(): MutableIterable<User>? {
-        return userRepository.findAll()
+    fun getHello(): List<User>? {
+        val users = userRepository.findAll()
+        return users.filter { user -> user.authority.equals("USER") }
     }
 
     @GetMapping("/api/error")
