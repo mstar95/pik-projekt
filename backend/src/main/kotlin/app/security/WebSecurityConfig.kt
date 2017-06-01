@@ -28,7 +28,7 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
         http
                 .authorizeRequests()
                 .antMatchers("/api/login").permitAll()
-                //.antMatchers("/api/**").authenticated()
+                .antMatchers("/api/**").authenticated()
                 .and()
                 .csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(entryPoint)

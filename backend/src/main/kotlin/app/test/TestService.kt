@@ -38,15 +38,19 @@ class TestService {
 
         result.test = test
         result.user = getUser()
-
+        var value = 0
         val questions : MutableList<QuestionResult> = mutableListOf()
         for((k, v) in solvedTest) {
             val answer = answerRepository.findOne(v.toLong())
             val question = questionRepository.findOne(k.toLong())
             val questionResult = QuestionResult(question, answer, result)
             questions.add(questionResult)
-            verifiedTest[k] = answer!!.isRightAnser
+            verifiedTest[k] = (answer.isRightAnser == true);
+            if(answer.isRightAnser == true) {
+                value++
+            }
         }
+        result.result = value
         result.questions = questions
         resultRepository.save(result)
         return verifiedTest

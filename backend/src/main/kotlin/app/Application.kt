@@ -21,6 +21,8 @@ class Application {
         questionResultRepository.deleteAll()
         resultRepository.deleteAll()
         userRepository.deleteAll()
+        testRepository.deleteAll()
+
         var user=User("user", "password","USER")
         var admin=User("admin", "password","ADMIN")
 //        if(userRepository.findByUsername("user") == null) {
@@ -29,7 +31,7 @@ class Application {
         var test = Test(title = "Test1")
         test.result = mutableListOf()
         test.user=user
-
+//
 
         var questions = listOf(
             Question("Question A", test),

@@ -14,7 +14,7 @@ import javax.persistence.*
 data class Test (val title: String? = null,
                  @ManyToOne  @JoinColumn(name = "user_id")  @JsonIgnore
                  var user: User? = null,
-                 @OneToMany(mappedBy = "test", cascade = arrayOf(CascadeType.ALL))
+                 @OneToMany(mappedBy = "test", cascade = arrayOf(CascadeType.ALL))  @JsonIgnore
                  var result:  MutableList<Result>? = null,
                  @OneToMany(mappedBy = "test", cascade = arrayOf(CascadeType.ALL))
                  var questions: List<Question>? =null,

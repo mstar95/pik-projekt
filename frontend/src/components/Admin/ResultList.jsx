@@ -32,9 +32,21 @@ class ResultList extends React.Component {
     } else if (error) {
       content = <p>{'Error'}</p>
     } else {
-      let resultListItems = results.map(result => (
-        <li key={result.id}><NavLink to={'/result/' + result.id}>{result.name}</NavLink></li>
-      ));
+      let resultListItems = results.map(result => {
+        let questions = result.questions.map(question => (
+          <li key={question.id}>
+            <h3>{question.question.title}</h3>
+            <p>{question.answer.title} : {question.answer.rightAnser ? "true" : "false"}</p>
+          </li>
+        ));
+        return (
+          <li key={result.id}>
+            <h2>{result.test.title}</h2>
+            <p>Result: {result.result} of {result.questions.length}</p>
+            <ul>{questions}</ul>
+          </li>
+        )
+      });
       content = <ul className='link-list'>{resultListItems}</ul>
     }
 

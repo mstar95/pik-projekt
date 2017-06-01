@@ -11,7 +11,7 @@ import javax.persistence.*
 
 @Entity
 @Table(name="\"Result\"")
-data class Result ( @ManyToOne @JoinColumn(name = "test_id")  @JsonIgnore
+data class Result ( @ManyToOne @JoinColumn(name = "test_id")
                     var test: Test? = null,
                     @ManyToOne @JoinColumn(name = "user_id")  @JsonIgnore
                     var user: User? = null,
