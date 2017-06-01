@@ -17,17 +17,16 @@ class Test extends React.Component {
     console.log(this.props, nextProps);
     if(!this.props.test.done && nextProps.test.done) {
       console.log('asdasd');
-      this.getResults(nextProps.test.answers);
+      this.getResults(nextProps.test.answers,nextProps.test.test.id);
     }
   }
 
-  getResults(answers) {
+  getResults(answers,id) {
     let { dispatch } = this.props;
-
     axios({
       method: 'post',
-      url: '/api/verify_test',
-      data: answers
+      url: '/api/verify_test/' + id,
+      data: answers ,
     }).catch(error => console.log(error))
       .then(response => dispatch(testResults(response.data)))
   }
