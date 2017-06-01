@@ -16,10 +16,9 @@ class ResultController {
     lateinit var userRepository: UserRepository
 
     @PreAuthorize(value="hasRole('ADMIN')")
-    @GetMapping("/api/user/{username}/results")
+    @GetMapping("/api/user/{id}/results")
     @ResponseBody
-    fun getResultsByUserName(@PathVariable name:String): MutableIterable<Result>? {
-        val user = userRepository.findByUsername(name)
-        return resultRepository.findByUserId(user.id)
+    fun getResultsByUserName(@PathVariable id:Long): MutableIterable<Result>? {
+        return resultRepository.findByUserId(id)
     }
 }

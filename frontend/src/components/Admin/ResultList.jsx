@@ -16,7 +16,7 @@ class ResultList extends React.Component {
     let { dispatch } = this.props;
 
     dispatch(resultListFetchStart());
-    return axios.get('/api/results' +id)
+    return axios.get('/api/user/' + id +  '/results')
       .then(response => dispatch(resultListFetchSuccess(response.data)))
       .catch(error => dispatch(resultListFetchFail()));
   }
