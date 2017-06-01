@@ -17,8 +17,8 @@ class TestList extends React.Component {
 
     dispatch(testListFetchStart());
     return axios.get('/api/tests')
-      .catch(error => dispatch(testListFetchFail()))
-      .then(response => dispatch(testListFetchSuccess(response.data)));
+      .then(response => dispatch(testListFetchSuccess(response.data)))
+      .catch(error => dispatch(testListFetchFail()));
   }
 
   render() {
