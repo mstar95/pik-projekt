@@ -27,6 +27,7 @@ class Application {
 //            userRepository.save(user)
 //        }
         var test = Test(title = "Test1")
+        test.result = mutableListOf()
         test.user=user
 
 

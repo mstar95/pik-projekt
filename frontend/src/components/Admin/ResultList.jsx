@@ -22,7 +22,9 @@ class ResultList extends React.Component {
   }
 
   render() {
-    let { loading, error,results } = this.props;
+    let { loading, error, results } = this.props;
+
+    console.log(results);
 
     let content;
     if (loading) {

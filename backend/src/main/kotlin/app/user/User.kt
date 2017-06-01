@@ -13,8 +13,8 @@ data class User (val username: String? = null,
                  @JsonIgnore
                  val password: String? = null,
                  val authority: String? = null,
-                 @OneToMany(mappedBy = "user", cascade = arrayOf(CascadeType.ALL))
+                 @OneToMany(mappedBy = "user", cascade = arrayOf(CascadeType.ALL)) @JsonIgnore
                  var tests: List<Test>? = null,
-                 @Id
-                 @GeneratedValue(strategy = GenerationType.AUTO)
-                 val id: Long? = null)
+@Id
+@GeneratedValue(strategy = GenerationType.AUTO)
+val id: Long? = null)
