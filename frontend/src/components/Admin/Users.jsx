@@ -15,8 +15,6 @@ class Users extends React.Component {
   getUsers() {
     let { dispatch } = this.props;
 
-    console.log('getUsers');
-
     dispatch(userListFetchStart());
     return axios.get('/api/users')
       .then(response => dispatch(userListFetchSuccess(response.data)))
@@ -28,8 +26,6 @@ class Users extends React.Component {
 
   render() {
     let { loading, error, users } = this.props;
-
-    console.log(users);
 
     let content;
     if (loading) {

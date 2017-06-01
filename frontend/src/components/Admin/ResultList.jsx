@@ -51,10 +51,10 @@ function mapStateToProps(state) {
   return {
     loading: state.resultlist.loading,
     error: state.resultlist.error,
-    tests: state.resultlist.results
+    results: state.resultlist.results
   }
 }
 
-Results = connect(mapStateToProps)(Results)
+ResultList = connect(mapStateToProps)(ResultList)
 
-export default Results;
+export default ResultList;

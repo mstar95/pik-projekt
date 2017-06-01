@@ -5,6 +5,7 @@ import test from './tests';
 import testlist from './testlist';
 import navbar from './navbar';
 import userlist from './userlist';
+import resultlist from './resultlist';
 
 const combined = combineReducers({
   form: formReducer,
@@ -12,7 +13,8 @@ const combined = combineReducers({
   test,
   testlist,
   navbar,
-  userlist
+  userlist,
+  resultlist
 })
 
 export default combined

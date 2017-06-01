@@ -4,10 +4,10 @@ export const resultListFetchStart = () => {
   }
 }
 
-export const resultListFetchSuccess = (tests) => {
+export const resultListFetchSuccess = (results) => {
   return {
     type: 'RESULT_LIST_FETCH_SUCCESS',
-    tests
+    results
   }
 }
 
