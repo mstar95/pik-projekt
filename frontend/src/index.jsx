@@ -1,12 +1,14 @@
+import './styles/index.scss';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
-
+import axios from 'axios';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import reducer from './reducers';
 
-import './styles/index.scss';
+import { loginSuccess, logoutSuccess } from './actions';
+import reducer from './reducers';
+import App from './components/App';
 
 let store = createStore(
   reducer,
@@ -15,9 +17,22 @@ let store = createStore(
 
 window.store = store;
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-);
+function start() {
+  ReactDOM.render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.getElementById('root')
+  );
+}
+
+axios.get('/api/isAdmin')
+  .then((request) => {
+    let isAdmin = request.data;
+    store.dispatch(loginSuccess());
+    start();
+  })
+  .catch((error) => {
+    store.dispatch(logoutSuccess());
+    start();
+  });

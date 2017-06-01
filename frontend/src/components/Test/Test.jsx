@@ -27,8 +27,8 @@ class Test extends React.Component {
       method: 'post',
       url: '/api/verify_test/' + id,
       data: answers ,
-    }).catch(error => console.log(error))
-      .then(response => dispatch(testResults(response.data)))
+    }).then(response => dispatch(testResults(response.data)))
+      .catch(error => console.log(error));
   }
 
   getTest(id) {
@@ -37,8 +37,8 @@ class Test extends React.Component {
     dispatch(testFetchStart());
 
     return axios.get('/api/test/' + id)
-      .catch(error => dispatch(testFetchFail()))
-      .then(response => dispatch(testFetchSuccess(response.data)));
+      .then(response => dispatch(testFetchSuccess(response.data)))
+      .catch(error => dispatch(testFetchFail()));
   }
 
   submit(values) {

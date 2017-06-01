@@ -1,4 +1,4 @@
 export * from './login';
-export * from './test';
+export * from './tests';
 export * from './testlist';
 export * from './navbar';
